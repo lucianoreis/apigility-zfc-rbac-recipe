@@ -404,6 +404,7 @@ class Module implements ApigilityProviderInterface
         $eventManager = $application->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $sm = $application->getServiceManager();
         $eventManager->attach(MvcAuthEvent::EVENT_AUTHENTICATION_POST, $sm->get('YourApp\\Rbac\\AuthenticationListener'), 100);
     }
 }
